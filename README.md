@@ -22,6 +22,8 @@ The script accepts the following command-line arguments:
 2. **Finding the Vessel with Maximum Average Temperature in 2020:**:
    ```bash
    python main.py --task temp --year 2020
+
+### Clone Repo
 1. **Clone the Repository**
    ```bash
    git clone https://github.com/yourusername/yourrepository.git
