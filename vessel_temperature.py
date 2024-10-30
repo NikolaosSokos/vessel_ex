@@ -1,7 +1,7 @@
 from utils import get_vessel_list, get_vessel_positions
 
 def find_max_average_temp_vessel(year):
-    """Finds the vessel with the highest average temperature in the specified year."""
+    
     vessel_ids = get_vessel_list()
     vessels_avg_temps = []
 
@@ -18,8 +18,10 @@ def find_max_average_temp_vessel(year):
             
             # Only calculate if both seatemp and airtemp are available
             if seatemp is not None and airtemp is not None:
-                combined_temp = (seatemp + airtemp) / 2
-                temperature_sums.append(combined_temp)
+                if -70 < seatemp < 70 and -70 < airtemp < 70:
+                    combined_temp = (seatemp + airtemp) / 2
+                    temperature_sums.append(combined_temp)
+
         
         # Calculate and print the average temperature for this vessel
         if temperature_sums:
