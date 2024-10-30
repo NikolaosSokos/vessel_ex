@@ -1,6 +1,7 @@
 import requests
 from datetime import datetime
-
+import urllib3
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 BASE_URL = "https://localisation.flotteoceanographique.fr/api/v2"
 
 def get_vessel_list():
