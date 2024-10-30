@@ -65,19 +65,25 @@ Converts a given year into ISO 8601 formatted start and end dates.
 
 Fetches position data for a specific vessel over the specified year.
 
-### 4. Warnings
-
-- Insecure Request Warning: The script disables warnings for unverified HTTPS requests using the `urllib3` library. Use caution when disabling these warnings, especially in production environments.
-
 ## Sample Output
 
 - **Finding the Northernmost Vessel**:
+  ## Script
+  ```bash
+  python main.py --task north --year 2021
+  ```
+  ## Output
   ```plaintext
   The northernmost vessel in 2021 is AT at latitude 64.917 on 2021-07-23T08:34:59.000+0000.
   ```
 
 - **Finding the Vessel with Maximum Average Temperature**:
+   ## Script
+  ```bash
+  python main.py --task temp --year 2021
+  ```
+  ## Output
   ```plaintext
-  The vessel with the highest average temperature in 2023 is AN with an average temperature of 25.59°C.
+  The vessel with the highest average temperature in 2021 is AN with an average temperature of 26.54°C.
   ```
 
