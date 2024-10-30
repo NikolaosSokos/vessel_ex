@@ -9,17 +9,17 @@
 
 2. **Build the Docker Image**
    ```bash
-   docker build -t northernmost_vessel_app .
+   docker build -t vessel_app .
    ```
 
 3. **Run the Docker Container**:
    - For Northernmost Vessel
      ```bash
-     docker run northernmost_vessel_app --task north --year 2021
+     docker run vessel_app --task north --year 2021
      ```
    - For Highest Average Temperature Vessel
      ```bash
-     docker run northernmost_vessel_app --task temp --year 2021
+     docker run vessel_app --task temp --year 2021
      ```
 
 ## Usage
