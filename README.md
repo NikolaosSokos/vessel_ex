@@ -1,4 +1,6 @@
 
+# Vessel Data Analysis
+
 ## Installation
 
 1. **Clone the Repository**
@@ -13,35 +15,69 @@
    ```
 
 3. **Run the Docker Container**:
-   - For Northernmost Vessel
+   - For finding the northernmost vessel:
      ```bash
      docker run vessel_app --task north --year 2021
      ```
-   - For Highest Average Temperature Vessel
+   - For finding the vessel with the highest average sea temperature:
      ```bash
      docker run vessel_app --task temp --year 2021
      ```
 
-## Usage
+## Scripts Overview
 
-The script can be run to perform one of two tasks: find the northernmost vessel or find the vessel with the highest average temperature for a given year. By default, the year is set to 2021.
+### 1. `main.py`
 
-### Command-Line Arguments
+**Functionality**: The main entry point of the application. It allows users to specify which task to run (finding the northernmost vessel or the vessel with the highest average temperature) and the year for the analysis.
 
-The script accepts the following command-line arguments:
+**Usage**:
+```bash
+python main.py --task <task_name> --year <year>
+```
 
-- `--task`: Specifies the analysis task to perform. Options:
-  - `north`: Find the northernmost vessel.
-  - `temp`: Find the vessel with the highest average temperature.
-  
-- `--year`: Optional. Specify the year for analysis. If omitted, the default year is 2021.
+**Arguments**:
+- `--task`: Specify the task to perform (`north` or `temp`).
+- `--year`: Specify the year for analysis (default is 2021).
 
-### Examples
+### 2. `vessel_north.py`
 
-1. **Finding the Northernmost Vessel in 2021**:
-   ```bash
-   python main.py --task north --year 2021
+**Functionality**: Contains logic to find the northernmost vessel for the specified year. It calculates the highest latitude reached by each vessel.
 
-2. **Finding the Vessel with Maximum Average Temperature in 2020:**:
-   ```bash
-   python main.py --task temp --year 2020
+
+### 3. `vessel_temperature.py`
+
+**Functionality**: Contains logic to find the vessel with the highest average temperature based on `seatemp` values for the specified year. It filters out temperatures below -5°C and above 30°C .
+
+
+## API Utility Functions
+
+The project includes several utility functions to interact with the POSNAV API:
+
+### 1. `get_vessel_list()`
+
+Retrieves a list of all vessel IDs from the API.
+
+### 2. `year_to_iso8601(year)`
+
+Converts a given year into ISO 8601 formatted start and end dates.
+
+### 3. `get_vessel_positions(vessel_id, year)`
+
+Fetches position data for a specific vessel over the specified year.
+
+### 4. Warnings
+
+- Insecure Request Warning: The script disables warnings for unverified HTTPS requests using the `urllib3` library. Use caution when disabling these warnings, especially in production environments.
+
+## Sample Output
+
+- **Finding the Northernmost Vessel**:
+  ```plaintext
+  The northernmost vessel in 2021 is AT at latitude 64.917 on 2021-07-23T08:34:59.000+0000.
+  ```
+
+- **Finding the Vessel with Maximum Average Temperature**:
+  ```plaintext
+  The vessel with the highest average temperature in 2023 is AN with an average temperature of 25.59°C.
+  ```
+

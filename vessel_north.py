@@ -24,4 +24,3 @@ def find_northernmost_vessel(year):
     # Print the vessel that reached the farthest north
     print(f"\nThe northernmost vessel in {year} is {northernmost_vessel['vessel_id']} "
           f"at latitude {northernmost_vessel['latitude']} on {northernmost_vessel['date']}.")
-
