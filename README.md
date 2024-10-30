@@ -3,8 +3,8 @@
 
 1. **Clone the Repository**
    ```bash
-   git clone https://github.com/yourusername/yourrepository.git
-   cd yourrepository
+   git clone https://github.com/NikolaosSokos/vessel_ex.git
+   cd vessel_ex
    ```
 
 2. **Build the Docker Image**
